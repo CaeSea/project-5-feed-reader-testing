@@ -84,7 +84,7 @@ $(function() {
     describe('Initial Entires', function() {
 
       beforeEach(function(done) {
-        loadFeed(0,function() {
+        loadFeed(1,function() {
           done();
         });
       });
@@ -96,19 +96,31 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
          it('there is at least one feed in the RSS feed', function(done) {
-           const container = $('.feed');
-           expect($(container).html()).not.toBe('');
+           const feedContainer = $('.feed');
+           expect($(feedContainer).html()).not.toBe('');
            done();
          });
       });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-    describe('new feeds causes content to change', function() {
+    describe('New feeds causes content to change', function() {
       /* TODO: Write a test that ensures when a new feed is loaded
        * by the loadFeed function that the content actually changes.
        * Remember, loadFeed() is asynchronous.
        */
+       let innerFeed;
 
+       beforeEach(function(done) {
+         innerFeed = $('.feed').html();
+         loadFeed(2,function() {
+           done();
+         });
+       });
+
+       it('Content changes on loadFeed function call', function(done) {
+         const NewInnerFeed = $('.feed').html();
+         expect(innerFeed).not.toEqual(NewInnerFeed);
+         done();
+       });
     });
-
 }());
