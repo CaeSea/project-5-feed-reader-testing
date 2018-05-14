@@ -54,14 +54,13 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
-
+      const body = document.body;
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
          it('menu is hidden by default', function() {
-           const body = document.body;
            expect($(body).hasClass('menu-hidden')).toBe(true);
          });
 
@@ -70,10 +69,19 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-
+          it('toggle menu is working as expected', function() {
+            const trigger = $('.menu-icon-link');
+            //click first time toggleClass
+            trigger.trigger('click');
+            expect($(body).hasClass('menu-hidden')).toBe(false);
+            //click second time
+            trigger.trigger('click');
+            expect($(body).hasClass('menu-hidden')).toBe(true);
+          });
       });
 
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entires', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -81,6 +89,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
@@ -88,4 +97,6 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+    });
 }());
