@@ -100,14 +100,15 @@ $(function() {
            expect($(container).html()).not.toBe('');
            done();
          });
+      });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-    
-
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+    describe('new feeds causes content to change', function() {
+      /* TODO: Write a test that ensures when a new feed is loaded
+       * by the loadFeed function that the content actually changes.
+       * Remember, loadFeed() is asynchronous.
+       */
 
     });
+
 }());
