@@ -110,21 +110,24 @@ $(function() {
        */
 
        // suite variable to store the state of the news feed before it is changed.
-       let innerFeed;
+       let innerFeed,
+           NewInnerFeed;
 
        /* Stores the state of the news feed before it is changed
         and then loads a new feed using the loadFeed function().
        */
        beforeEach(function(done) {
-         innerFeed = $('.feed').html();
-         loadFeed(2,function() {
-           done();
+         loadFeed(0,function() {
+           innerFeed = $('.feed').html();
+           loadFeed(1, function() {
+             NewInnerFeed = $('.feed').html();
+             done();
+           });
          });
        });
 
        // Ensures test does what it is meant to as mentioned above.
        it('Content changes on loadFeed function call', function(done) {
-         const NewInnerFeed = $('.feed').html();
          expect(innerFeed).not.toEqual(NewInnerFeed);
          done();
        });
