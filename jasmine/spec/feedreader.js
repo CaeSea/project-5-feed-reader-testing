@@ -30,8 +30,7 @@ $(function() {
          */
          it('feed has a defined url that is not empty', function() {
            allFeeds.forEach(function(feed) {
-             expect(feed.url).toBeDefined();
-             expect(feed.url).not.toBe("");
+             expect((feed.url).length).not.toBe(0);
            });
          });
 
@@ -42,8 +41,7 @@ $(function() {
          */
          it('feed has a name defined and is not empty', function() {
            allFeeds.forEach(function(feed) {
-             expect(feed.name).toBeDefined();
-             expect(feed.name).not.toBe("");
+             expect((feed.url).name).not.toBe(0);
            });
          });
     });
@@ -84,9 +82,7 @@ $(function() {
       test is carried out after the feed has been loaded by the application.
       */
       beforeEach(function(done) {
-        loadFeed(1,function() {
-          done();
-        });
+        loadFeed(1, done);
       });
 
         /* This ensures when the loadFeed
@@ -96,8 +92,8 @@ $(function() {
          * Jasmine's asynchronous done() function.
          */
          it('there is at least one feed in the RSS feed', function(done) {
-           const feedContainer = $('.feed');
-           expect($(feedContainer).html()).not.toBe('');
+           const feedContainer = $('.feed .entry');
+           expect($(feedContainer).length).toBeGreaterThan(0);
            done();
          });
       });
